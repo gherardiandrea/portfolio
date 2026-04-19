@@ -1,0 +1,109 @@
+---
+interface Tech {
+  name: string;
+  level: 'primary' | 'secondary';
+  color: string;
+}
+
+interface Category {
+  label: string;
+  emoji: string;
+  techs: Tech[];
+}
+
+const categories: Category[] = [
+  {
+    label: 'Backend',
+    emoji: '⚙️',
+    techs: [
+      { name: 'PHP',      level: 'primary',   color: '#7c3aed' },
+      { name: 'Laravel',  level: 'primary',   color: '#ef4444' },
+      { name: 'Symfony',  level: 'primary',   color: '#000000' },
+      { name: 'MySQL',    level: 'primary',   color: '#4f46e5' },
+      { name: 'Redis',    level: 'secondary', color: '#dc2626' },
+      { name: 'REST API', level: 'secondary', color: '#0891b2' },
+    ],
+  },
+  {
+    label: 'Frontend',
+    emoji: '🎨',
+    techs: [
+      { name: 'HTML/CSS',    level: 'primary',   color: '#06b6d4' },
+      { name: 'JavaScript',  level: 'primary',   color: '#eab308' },
+      { name: 'TypeScript',  level: 'secondary', color: '#3b82f6' },
+      { name: 'Vue.js',      level: 'secondary', color: '#10b981' },
+      { name: 'Tailwind CSS',level: 'secondary', color: '#06b6d4' },
+      { name: 'Alpine.js',   level: 'secondary', color: '#8b5cf6' },
+    ],
+  },
+  {
+    label: 'Tools & DevOps',
+    emoji: '🛠️',
+    techs: [
+      { name: 'Git',      level: 'primary',   color: '#f97316' },
+      { name: 'Linux',    level: 'primary',   color: '#eab308' },
+      { name: 'Docker',   level: 'secondary', color: '#3b82f6' },
+      { name: 'Nginx',    level: 'secondary', color: '#10b981' },
+      { name: 'CI/CD',    level: 'secondary', color: '#6366f1' },
+      { name: 'Composer', level: 'secondary', color: '#f59e0b' },
+    ],
+  },
+];
+---
+
+<section id="stack" class="section px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="reveal">
+      <h2 class="section-title">Tech Stack</h2>
+      <p class="section-subtitle">Le tecnologie con cui lavoro ogni giorno.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {categories.map(cat => (
+        <div class="reveal gradient-border p-6">
+          <!-- Category header -->
+          <div class="flex items-center gap-2 mb-5">
+            <span class="text-xl" aria-hidden="true">{cat.emoji}</span>
+            <h3 class="font-heading font-semibold text-[var(--color-text-primary)] text-sm tracking-wide uppercase">
+              {cat.label}
+            </h3>
+          </div>
+
+          <!-- Tech pills -->
+          <div class="flex flex-wrap gap-2">
+            {cat.techs.map(tech => (
+              <span
+                class={`font-mono text-xs px-3 py-1.5 rounded-lg border transition-all duration-200 hover:-translate-y-0.5 cursor-default ${
+                  tech.level === 'primary'
+                    ? 'opacity-100'
+                    : 'opacity-60 hover:opacity-90'
+                }`}
+                style={`
+                  color: ${tech.color};
+                  border-color: ${tech.color}30;
+                  background: ${tech.color}10;
+                `}
+              >
+                {tech.name}
+              </span>
+            ))}
+          </div>
+
+          <!-- Legend -->
+          <div class="mt-5 pt-4 border-t border-[var(--color-border)] flex items-center gap-4">
+            <div class="flex items-center gap-1.5">
+              <div class="w-1.5 h-1.5 rounded-full bg-[var(--color-text-secondary)]"></div>
+              <span class="font-mono text-xs text-[var(--color-text-muted)]">principale</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <div class="w-1.5 h-1.5 rounded-full bg-[var(--color-text-muted)] opacity-50"></div>
+              <span class="font-mono text-xs text-[var(--color-text-muted)]">secondario</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

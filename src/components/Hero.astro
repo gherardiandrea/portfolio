@@ -1,0 +1,87 @@
+---
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
+
+  <!-- Animated background blobs -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div
+      class="blob-1 absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-[0.12]"
+      style="background: radial-gradient(circle, #7c3aed 0%, transparent 70%);"
+    ></div>
+    <div
+      class="blob-2 absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full opacity-[0.10]"
+      style="background: radial-gradient(circle, #06b6d4 0%, transparent 70%);"
+    ></div>
+    <!-- Grid pattern -->
+    <div
+      class="absolute inset-0 opacity-[0.03]"
+      style="background-image: linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px); background-size: 48px 48px;"
+    ></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-4xl mx-auto text-center">
+
+    <!-- Small label -->
+    <div class="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)]/60 backdrop-blur-sm">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="font-mono text-xs text-[var(--color-text-secondary)] tracking-wider">Disponibile per collaborazioni</span>
+    </div>
+
+    <!-- Main heading -->
+    <h1 class="font-heading font-bold leading-tight mb-6" style="font-size: clamp(2.5rem, 8vw, 5.5rem);">
+      <span class="block text-[var(--color-text-primary)]">Andrea</span>
+      <span class="block gradient-text">Gherardi</span>
+    </h1>
+
+    <!-- Role -->
+    <p class="font-mono text-[var(--color-accent-bright)] text-base md:text-lg tracking-wider mb-6">
+      Web Developer &mdash; PHP · Laravel · Symfony
+    </p>
+
+    <!-- Bio -->
+    <p class="text-[var(--color-text-secondary)] text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
+      Costruisco esperienze web dal 2016. Ingegnere informatico con una passione
+      per il codice pulito, le architetture scalabili e i prodotti che funzionano davvero.
+    </p>
+
+    <!-- Stats row -->
+    <div class="flex flex-wrap justify-center gap-6 mb-14">
+      {[
+        { value: '10+', label: 'anni di coding' },
+        { value: '2019', label: 'laurea in ing. informatica' },
+        { value: 'freedome', label: 'attuale employer' },
+      ].map(({ value, label }) => (
+        <div class="text-center px-4">
+          <div class="font-heading font-bold text-2xl gradient-text">{value}</div>
+          <div class="font-mono text-xs text-[var(--color-text-muted)] tracking-wider mt-0.5">{label}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA buttons -->
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a
+        href="#projects"
+        class="px-7 py-3 rounded-xl font-medium text-sm text-white transition-all duration-300 glow-accent"
+        style="background: linear-gradient(135deg, #7c3aed, #4f46e5);"
+      >
+        Vedi i progetti
+      </a>
+      <a
+        href="#contact"
+        class="px-7 py-3 rounded-xl font-medium text-sm border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-bright)] transition-all duration-300"
+      >
+        Contattami
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[var(--color-text-muted)]">
+    <span class="font-mono text-xs tracking-widest">SCROLL</span>
+    <div class="w-px h-12 bg-gradient-to-b from-[var(--color-text-muted)] to-transparent animate-pulse"></div>
+  </div>
+
+</section>

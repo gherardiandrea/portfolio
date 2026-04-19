@@ -1,0 +1,31 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="py-8 px-6 border-t border-[var(--color-border)]">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+    <p class="font-mono text-xs text-[var(--color-text-muted)]">
+      © {year} Andrea Gherardi
+    </p>
+    <p class="font-mono text-xs text-[var(--color-text-muted)]">
+      Built with
+      <a
+        href="https://astro.build"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[var(--color-accent)] hover:text-[var(--color-accent-bright)] transition-colors"
+      >
+        Astro
+      </a>
+      &
+      <a
+        href="https://tailwindcss.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[var(--color-accent)] hover:text-[var(--color-accent-bright)] transition-colors"
+      >
+        Tailwind
+      </a>
+    </p>
+  </div>
+</footer>

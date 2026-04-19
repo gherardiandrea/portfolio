@@ -1,0 +1,131 @@
+---
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  url?: string;
+  accent: string;
+  span?: 'wide' | 'tall' | 'normal';
+  emoji: string;
+}
+
+const projects: Project[] = [
+  {
+    title: 'freedome.it',
+    description:
+      'Marketplace italiano per esperienze outdoor: escursioni, arrampicate, canoe, sci e molto altro. Piattaforma completa con sistema di prenotazioni, pagamenti online, pannello operatori e gestione disponibilità.',
+    tags: ['Laravel', 'PHP', 'MySQL', 'Redis', 'Stripe'],
+    url: 'https://freedome.it',
+    accent: '#7c3aed',
+    span: 'wide',
+    emoji: '🏔️',
+  },
+  {
+    title: 'freedome.eu',
+    description:
+      'Espansione europea del marketplace. Multilingua, multi-valuta, ottimizzato per il mercato internazionale.',
+    tags: ['Laravel', 'PHP', 'i18n'],
+    url: 'https://freedome.eu',
+    accent: '#06b6d4',
+    span: 'normal',
+    emoji: '🌍',
+  },
+  {
+    title: 'Sistema di prenotazioni',
+    description:
+      'Engine custom per la gestione di disponibilità, slot, varianti di prezzo e prenotazioni in tempo reale con logica anti-race-condition.',
+    tags: ['PHP', 'MySQL', 'Queue', 'Redis'],
+    accent: '#4f46e5',
+    span: 'normal',
+    emoji: '📅',
+  },
+  {
+    title: 'API & integrazioni',
+    description:
+      'Sviluppo di API RESTful per l\'integrazione con provider esterni, gateway di pagamento e app mobile.',
+    tags: ['REST API', 'OAuth', 'Stripe', 'JSON'],
+    accent: '#10b981',
+    span: 'normal',
+    emoji: '🔌',
+  },
+  {
+    title: 'CMS & backoffice',
+    description:
+      'Pannello amministrativo custom per la gestione di operatori, esperienze, prenotazioni e reportistica.',
+    tags: ['Laravel', 'Vue.js', 'Tailwind'],
+    accent: '#f59e0b',
+    span: 'normal',
+    emoji: '⚙️',
+  },
+];
+---
+
+<section id="projects" class="section px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="reveal">
+      <h2 class="section-title">Progetti</h2>
+      <p class="section-subtitle">Cosa ho costruito negli ultimi anni.</p>
+    </div>
+
+    <!-- Bento grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+      {projects.map((project, i) => (
+        <div
+          class={`reveal gradient-border p-6 flex flex-col gap-4 group transition-all duration-300 hover:bg-[var(--color-bg-card-hover)] cursor-default ${
+            project.span === 'wide' ? 'md:col-span-2' : ''
+          }`}
+        >
+          <!-- Emoji + title row -->
+          <div class="flex items-start justify-between gap-3">
+            <div
+              class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 transition-transform duration-300 group-hover:scale-110"
+              style={`background: ${project.accent}18; border: 1px solid ${project.accent}30;`}
+            >
+              {project.emoji}
+            </div>
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="shrink-0 w-8 h-8 rounded-lg border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-bright)] transition-all duration-200"
+                aria-label={`Visita ${project.title}`}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            )}
+          </div>
+
+          <div class="flex-1">
+            <h3
+              class="font-heading font-semibold text-[var(--color-text-primary)] mb-2 group-hover:text-white transition-colors"
+            >
+              {project.title}
+            </h3>
+            <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+              {project.description}
+            </p>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mt-auto pt-2 border-t border-[var(--color-border)]">
+            {project.tags.map(tag => (
+              <span
+                class="font-mono text-xs px-2 py-0.5 rounded"
+                style={`color: ${project.accent}; background: ${project.accent}12;`}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
