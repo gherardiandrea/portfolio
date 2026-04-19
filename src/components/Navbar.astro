@@ -1,108 +1,156 @@
 ---
 const links = [
-  { href: '#experience', label: 'Esperienza' },
-  { href: '#projects',   label: 'Progetti' },
-  { href: '#stack',      label: 'Stack' },
-  { href: '#contact',    label: 'Contatti' },
+  { href: '#experience', label: 'Esperienza', num: '01' },
+  { href: '#projects',   label: 'Progetti',   num: '02' },
+  { href: '#stack',      label: 'Stack',       num: '03' },
+  { href: '#contact',    label: 'Contatti',    num: '04' },
 ];
 ---
 
-<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="#" class="font-mono text-sm font-medium tracking-widest gradient-text hover:opacity-80 transition-opacity">
-      AG
+<header
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+  style="padding: 1.5rem 2.5rem;"
+>
+  <nav
+    style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;"
+  >
+    <!-- Logotype -->
+    <a
+      href="#"
+      class="underline-hover"
+      style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 300; letter-spacing: 0.15em; color: var(--color-ink); text-decoration: none;"
+      aria-label="Torna all'inizio"
+    >
+      A.G.
     </a>
 
-    <!-- Desktop links -->
-    <ul class="hidden md:flex items-center gap-8">
-      {links.map(({ href, label }) => (
+    <!-- Desktop navigation -->
+    <ul
+      id="nav-links"
+      style="display: flex; align-items: center; gap: 2.5rem; list-style: none; margin: 0; padding: 0;"
+    >
+      {links.map(({ href, label, num }) => (
         <li>
           <a
             href={href}
-            class="nav-link text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 relative"
+            data-section={href.slice(1)}
+            class="nav-link"
+            style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-ink-ghost); text-decoration: none; transition: color 0.25s ease; display: flex; align-items: center; gap: 0.4rem;"
           >
+            <span style="color: var(--color-terra); font-size: 0.55rem;">{num}</span>
             {label}
           </a>
         </li>
       ))}
     </ul>
 
-    <!-- Mobile hamburger -->
+    <!-- Mobile burger -->
     <button
-      id="menu-btn"
-      class="md:hidden flex flex-col gap-1.5 p-2 group"
-      aria-label="Toggle menu"
+      id="burger"
+      aria-label="Menu"
       aria-expanded="false"
+      style="display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px;"
     >
-      <span class="block w-5 h-px bg-[var(--color-text-secondary)] transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-2"></span>
-      <span class="block w-5 h-px bg-[var(--color-text-secondary)] transition-all duration-300 group-[.open]:opacity-0"></span>
-      <span class="block w-5 h-px bg-[var(--color-text-secondary)] transition-all duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-2"></span>
+      <span id="b1" style="display: block; width: 22px; height: 1px; background: var(--color-ink-dim); transition: all 0.3s ease;"></span>
+      <span id="b2" style="display: block; width: 22px; height: 1px; background: var(--color-ink-dim); transition: all 0.3s ease;"></span>
+      <span id="b3" style="display: block; width: 14px; height: 1px; background: var(--color-terra); transition: all 0.3s ease;"></span>
     </button>
   </nav>
 
-  <!-- Mobile menu -->
+  <!-- Mobile drawer -->
   <div
-    id="mobile-menu"
-    class="md:hidden hidden absolute inset-x-0 top-full bg-[var(--color-bg)]/95 backdrop-blur-xl border-b border-[var(--color-border)] px-6 py-6"
+    id="mobile-drawer"
+    style="display: none; position: fixed; inset: 0; background: var(--color-bg); z-index: 100; flex-direction: column; justify-content: center; align-items: flex-start; padding: 3rem 2.5rem; gap: 2rem;"
   >
-    <ul class="flex flex-col gap-4">
-      {links.map(({ href, label }) => (
-        <li>
-          <a
-            href={href}
-            class="mobile-link block text-lg font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-          >
-            {label}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <button
+      id="close-menu"
+      aria-label="Chiudi menu"
+      style="position: absolute; top: 1.5rem; right: 2.5rem; background: none; border: none; cursor: pointer; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; color: var(--color-ink-ghost); text-transform: uppercase;"
+    >
+      Chiudi ×
+    </button>
+    {links.map(({ href, label, num }) => (
+      <a
+        href={href}
+        class="mobile-link"
+        style="font-family: var(--font-display); font-size: 3rem; font-weight: 300; color: var(--color-ink-dim); text-decoration: none; transition: color 0.2s; display: flex; align-items: baseline; gap: 1rem; line-height: 1;"
+      >
+        <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-terra); letter-spacing: 0.15em;">{num}</span>
+        {label}
+      </a>
+    ))}
   </div>
 </header>
 
+<style>
+  @media (max-width: 640px) {
+    #nav-links { display: none !important; }
+    #burger { display: flex !important; }
+  }
+</style>
+
 <script>
-  // Scroll background
   const navbar = document.getElementById('navbar')!;
+  const burger = document.getElementById('burger')!;
+  const drawer = document.getElementById('mobile-drawer')!;
+  const closeBtn = document.getElementById('close-menu')!;
+  const b1 = document.getElementById('b1')!;
+  const b2 = document.getElementById('b2')!;
+  const b3 = document.getElementById('b3')!;
+
+  // Scroll: add background
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      navbar.style.cssText = 'background: rgba(8,8,16,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(34,34,58,0.8);';
+    if (window.scrollY > 60) {
+      navbar.style.background = 'rgba(10,9,7,0.92)';
+      navbar.style.backdropFilter = 'blur(12px)';
+      navbar.style.borderBottom = '1px solid rgba(39,37,32,0.8)';
     } else {
-      navbar.style.cssText = '';
+      navbar.style.background = '';
+      navbar.style.backdropFilter = '';
+      navbar.style.borderBottom = '';
     }
   }, { passive: true });
 
-  // Mobile menu
-  const btn = document.getElementById('menu-btn')!;
-  const menu = document.getElementById('mobile-menu')!;
-  btn.addEventListener('click', () => {
-    const isOpen = menu.classList.toggle('hidden') === false;
-    btn.setAttribute('aria-expanded', String(isOpen));
-  });
+  // Mobile toggle
+  function openMenu() {
+    drawer.style.display = 'flex';
+    burger.setAttribute('aria-expanded', 'true');
+    b1.style.transform = 'rotate(45deg) translate(4px, 4px)';
+    b2.style.opacity = '0';
+    b3.style.transform = 'rotate(-45deg) translate(4px, -4px)';
+    b3.style.width = '22px';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    drawer.style.display = 'none';
+    burger.setAttribute('aria-expanded', 'false');
+    b1.style.transform = '';
+    b2.style.opacity = '';
+    b3.style.transform = '';
+    b3.style.width = '14px';
+    document.body.style.overflow = '';
+  }
 
-  // Close mobile menu on link click
-  menu.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.add('hidden');
-      btn.setAttribute('aria-expanded', 'false');
-    });
-  });
+  burger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
 
-  // Active section highlight
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const observer = new IntersectionObserver(
+  // Active section
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+
+  const obs = new IntersectionObserver(
     entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            const active = link.getAttribute('href') === `#${entry.target.id}`;
-            link.classList.toggle('!text-[var(--color-text-primary)]', active);
-          });
-        }
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        navLinks.forEach(link => {
+          const active = link.dataset.section === e.target.id;
+          link.style.color = active ? 'var(--color-ink)' : 'var(--color-ink-ghost)';
+        });
       });
     },
     { rootMargin: '-40% 0px -50% 0px' }
   );
-  sections.forEach(s => observer.observe(s));
+  sections.forEach(s => obs.observe(s));
 </script>

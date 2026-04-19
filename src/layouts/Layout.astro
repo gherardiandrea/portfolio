@@ -8,37 +8,35 @@ interface Props {
 
 const {
   title = 'Andrea Gherardi — Web Developer',
-  description = 'Andrea Gherardi, ingegnere informatico e sviluppatore web full-stack specializzato in PHP, Laravel e Symfony. Dal 2016 costruisco esperienze web performanti e scalabili.',
+  description = 'Andrea Gherardi, ingegnere informatico e sviluppatore web. PHP, Laravel, Symfony. Dal 2016 costruisco prodotti web scalabili e ben progettati.',
 } = Astro.props;
 ---
 <!doctype html>
-<html lang="it" class="scroll-smooth">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content="Andrea Gherardi" />
-
-    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="it_IT" />
 
-    <!-- Fonts: Space Grotesk + Inter + JetBrains Mono -->
+    <!-- Cormorant Garamond + DM Sans + IBM Plex Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
     <title>{title}</title>
 
-    <!-- Favicon inline SVG -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237c3aed'/><text y='.9em' font-size='60' font-family='sans-serif' font-weight='bold' fill='white' x='10'>AG</text></svg>" />
+    <!-- Favicon: terracotta AG monogram -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0907'/%3E%3Ctext x='12' y='74' font-size='62' font-family='Georgia%2C serif' font-weight='400' fill='%23C4622D'%3EAG%3C/text%3E%3C/svg%3E" />
   </head>
-  <body style="background-color: #080810; color: #f0f0f8;">
+  <body style="background:#0A0907; color:#F2ECD8; font-family:'Cormorant Garamond',Georgia,serif;">
     <slot />
   </body>
 </html>

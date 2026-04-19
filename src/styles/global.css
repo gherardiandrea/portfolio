@@ -1,133 +1,223 @@
 @import "tailwindcss";
 
+/* ─── Design tokens: Milanese Craftsman ─────────────────── */
 @theme {
-  --color-bg: #080810;
-  --color-bg-card: #0f0f1a;
-  --color-bg-card-hover: #16162a;
-  --color-surface: #13131f;
-  --color-border: #22223a;
-  --color-border-bright: #3a3a5c;
+  /* Backgrounds — warm dark, like aged vellum in shadow */
+  --color-bg:          #0A0907;
+  --color-bg-surface:  #131209;
+  --color-bg-elevated: #1C1B16;
+  --color-bg-hover:    #222118;
 
-  --color-text-primary: #f0f0f8;
-  --color-text-secondary: #9090b0;
-  --color-text-muted: #4a4a6a;
+  /* Borders */
+  --color-border:      #272520;
+  --color-border-warm: #3C3A2E;
 
-  --color-accent: #7c3aed;
-  --color-accent-mid: #4f46e5;
-  --color-accent-bright: #06b6d4;
+  /* Text — warm cream hierarchy */
+  --color-ink:         #F2ECD8;
+  --color-ink-dim:     #8A836B;
+  --color-ink-ghost:   #4A4538;
 
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Accent — terracotta / burnt sienna */
+  --color-terra:       #C4622D;
+  --color-terra-light: #D97B4A;
+  --color-terra-glow:  rgba(196, 98, 45, 0.15);
+
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
 }
 
+/* ─── Base ───────────────────────────────────────────────── */
 @layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
   html {
     scroll-behavior: smooth;
-    background-color: var(--color-bg);
-    color: var(--color-text-primary);
+    background-color: #0A0907;
+    color: #F2ECD8;
+    font-size: 16px;
   }
 
   body {
-    font-family: var(--font-body);
+    font-family: var(--font-display);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
-  h1, h2, h3, h4 {
-    font-family: var(--font-heading);
+  ::selection {
+    background: var(--color-terra);
+    color: var(--color-ink);
   }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--color-border-warm); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-terra); }
 }
 
-/* ─── Gradient text utility ────────────────────────────── */
-.gradient-text {
-  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 40%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ─── Typography scale ───────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-mono    { font-family: var(--font-mono); }
+
+/* ─── Grain overlay ──────────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
 }
 
-/* ─── Gradient border card ──────────────────────────────── */
-.gradient-border {
+/* ─── Horizontal rule ────────────────────────────────────── */
+.hr {
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ─── Section number label ───────────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-terra);
+}
+
+/* ─── Underline hover animation ──────────────────────────── */
+.underline-hover {
   position: relative;
-  background: var(--color-bg-card);
-  border-radius: 1rem;
+  display: inline-block;
 }
-.gradient-border::before {
+.underline-hover::after {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: 1rem;
-  padding: 1px;
-  background: linear-gradient(135deg, #7c3aed33, #06b6d433, #7c3aed33);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-terra);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.underline-hover:hover::after { width: 100%; }
 
-/* ─── Blob animation ────────────────────────────────────── */
-@keyframes drift {
-  0%   { transform: translate(0px, 0px) scale(1); }
-  33%  { transform: translate(40px, -30px) scale(1.05); }
-  66%  { transform: translate(-20px, 20px) scale(0.95); }
-  100% { transform: translate(0px, 0px) scale(1); }
-}
-@keyframes drift2 {
-  0%   { transform: translate(0px, 0px) scale(1); }
-  33%  { transform: translate(-35px, 25px) scale(1.08); }
-  66%  { transform: translate(25px, -15px) scale(0.92); }
-  100% { transform: translate(0px, 0px) scale(1); }
-}
-
-.blob-1 { animation: drift 20s ease-in-out infinite; }
-.blob-2 { animation: drift2 25s ease-in-out infinite; }
-
-/* ─── Scroll-driven fade-in ─────────────────────────────── */
-@keyframes fade-slide-up {
-  from { opacity: 0; transform: translateY(32px); }
+/* ─── Scroll reveal ──────────────────────────────────────── */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .reveal {
-  animation: fade-slide-up linear both;
+  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-timeline: view();
-  animation-range: entry 0% entry 40%;
+  animation-range: entry 0% entry 35%;
 }
 
-/* Fallback for browsers without scroll-driven animations */
 @supports not (animation-timeline: view()) {
   .reveal { opacity: 1; transform: none; }
 }
 
-/* ─── Glow effect ───────────────────────────────────────── */
-.glow-accent {
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.15), 0 0 60px rgba(124, 58, 237, 0.05);
+/* ─── Card ───────────────────────────────────────────────── */
+.card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
-.glow-accent:hover {
-  box-shadow: 0 0 30px rgba(124, 58, 237, 0.3), 0 0 80px rgba(6, 182, 212, 0.1);
+.card:hover {
+  border-color: var(--color-border-warm);
+  background: var(--color-bg-elevated);
 }
 
-/* ─── Custom scrollbar ──────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: var(--color-border-bright); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+/* ─── Terra accent text ──────────────────────────────────── */
+.text-terra { color: var(--color-terra); }
+.text-ink    { color: var(--color-ink); }
+.text-dim    { color: var(--color-ink-dim); }
+.text-ghost  { color: var(--color-ink-ghost); }
 
-/* ─── Section spacing ───────────────────────────────────── */
-.section {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+/* ─── Button primary ─────────────────────────────────────── */
+.btn-terra {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--color-terra);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
-.section-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+.btn-terra:hover {
+  background: var(--color-terra-light);
+  transform: translateY(-1px);
 }
-.section-subtitle {
-  color: var(--color-text-secondary);
-  font-size: 1rem;
-  margin-bottom: 3rem;
+
+/* ─── Button ghost ───────────────────────────────────────── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: var(--color-ink-dim);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border-warm);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.btn-ghost:hover {
+  color: var(--color-ink);
+  border-color: var(--color-terra);
+}
+
+/* ─── Decorative corner ──────────────────────────────────── */
+.corner-mark {
+  position: relative;
+}
+.corner-mark::before, .corner-mark::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--color-terra);
+  border-style: solid;
+  opacity: 0.4;
+}
+.corner-mark::before {
+  top: 0; left: 0;
+  border-width: 1px 0 0 1px;
+}
+.corner-mark::after {
+  bottom: 0; right: 0;
+  border-width: 0 1px 1px 0;
+}
+
+/* ─── Tag pill ───────────────────────────────────────────── */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--color-border);
+  color: var(--color-ink-ghost);
+  background: transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+.tag:hover {
+  border-color: var(--color-terra);
+  color: var(--color-terra);
 }

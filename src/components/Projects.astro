@@ -1,131 +1,149 @@
 ---
 interface Project {
   title: string;
+  year: string;
   description: string;
   tags: string[];
   url?: string;
-  accent: string;
-  span?: 'wide' | 'tall' | 'normal';
-  emoji: string;
+  wide?: boolean;
+  accent?: string;
 }
 
 const projects: Project[] = [
   {
     title: 'freedome.it',
-    description:
-      'Marketplace italiano per esperienze outdoor: escursioni, arrampicate, canoe, sci e molto altro. Piattaforma completa con sistema di prenotazioni, pagamenti online, pannello operatori e gestione disponibilità.',
+    year: '2019 — oggi',
+    description: 'Marketplace italiano per esperienze outdoor: escursioni, arrampicate, sci, canoe e molto altro. Piattaforma completa con sistema di prenotazioni real-time, gateway di pagamento, pannello operatori e gestione disponibilità.',
     tags: ['Laravel', 'PHP', 'MySQL', 'Redis', 'Stripe'],
     url: 'https://freedome.it',
-    accent: '#7c3aed',
-    span: 'wide',
-    emoji: '🏔️',
+    wide: true,
+    accent: '#C4622D',
   },
   {
     title: 'freedome.eu',
-    description:
-      'Espansione europea del marketplace. Multilingua, multi-valuta, ottimizzato per il mercato internazionale.',
-    tags: ['Laravel', 'PHP', 'i18n'],
+    year: '2022 — oggi',
+    description: 'Espansione europea del marketplace. Multilingua, multi-valuta, ottimizzato per il mercato internazionale con localizzazione completa.',
+    tags: ['Laravel', 'PHP', 'i18n', 'MySQL'],
     url: 'https://freedome.eu',
-    accent: '#06b6d4',
-    span: 'normal',
-    emoji: '🌍',
+    accent: '#8B6914',
   },
   {
-    title: 'Sistema di prenotazioni',
-    description:
-      'Engine custom per la gestione di disponibilità, slot, varianti di prezzo e prenotazioni in tempo reale con logica anti-race-condition.',
-    tags: ['PHP', 'MySQL', 'Queue', 'Redis'],
-    accent: '#4f46e5',
-    span: 'normal',
-    emoji: '📅',
+    title: 'Booking Engine',
+    year: '2020',
+    description: 'Engine custom per gestione disponibilità, slot e prenotazioni real-time con logica anti-race-condition.',
+    tags: ['PHP', 'MySQL', 'Redis', 'Queue'],
+    accent: '#2D6E7E',
   },
   {
-    title: 'API & integrazioni',
-    description:
-      'Sviluppo di API RESTful per l\'integrazione con provider esterni, gateway di pagamento e app mobile.',
-    tags: ['REST API', 'OAuth', 'Stripe', 'JSON'],
-    accent: '#10b981',
-    span: 'normal',
-    emoji: '🔌',
+    title: 'API Layer',
+    year: '2021',
+    description: 'REST API per integrazioni con app mobile, partner esterni e gateway di pagamento.',
+    tags: ['REST', 'OAuth2', 'JSON', 'Stripe'],
+    accent: '#3D5A3E',
   },
   {
-    title: 'CMS & backoffice',
-    description:
-      'Pannello amministrativo custom per la gestione di operatori, esperienze, prenotazioni e reportistica.',
-    tags: ['Laravel', 'Vue.js', 'Tailwind'],
-    accent: '#f59e0b',
-    span: 'normal',
-    emoji: '⚙️',
+    title: 'Backoffice CMS',
+    year: '2019',
+    description: 'Pannello custom per gestione operatori, esperienze, prenotazioni e reportistica avanzata.',
+    tags: ['Laravel', 'Vue.js', 'MySQL'],
+    accent: '#5A3D5A',
   },
 ];
 ---
 
-<section id="projects" class="section px-6">
-  <div class="max-w-5xl mx-auto">
-
-    <div class="reveal">
-      <h2 class="section-title">Progetti</h2>
-      <p class="section-subtitle">Cosa ho costruito negli ultimi anni.</p>
-    </div>
-
-    <!-- Bento grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
-      {projects.map((project, i) => (
-        <div
-          class={`reveal gradient-border p-6 flex flex-col gap-4 group transition-all duration-300 hover:bg-[var(--color-bg-card-hover)] cursor-default ${
-            project.span === 'wide' ? 'md:col-span-2' : ''
-          }`}
-        >
-          <!-- Emoji + title row -->
-          <div class="flex items-start justify-between gap-3">
-            <div
-              class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 transition-transform duration-300 group-hover:scale-110"
-              style={`background: ${project.accent}18; border: 1px solid ${project.accent}30;`}
-            >
-              {project.emoji}
-            </div>
-            {project.url && (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="shrink-0 w-8 h-8 rounded-lg border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-bright)] transition-all duration-200"
-                aria-label={`Visita ${project.title}`}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-              </a>
-            )}
-          </div>
-
-          <div class="flex-1">
-            <h3
-              class="font-heading font-semibold text-[var(--color-text-primary)] mb-2 group-hover:text-white transition-colors"
-            >
-              {project.title}
-            </h3>
-            <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-              {project.description}
-            </p>
-          </div>
-
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-2 mt-auto pt-2 border-t border-[var(--color-border)]">
-            {project.tags.map(tag => (
-              <span
-                class="font-mono text-xs px-2 py-0.5 rounded"
-                style={`color: ${project.accent}; background: ${project.accent}12;`}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-
+<section
+  id="projects"
+  style="padding: 7rem 2.5rem; max-width: 1200px; margin: 0 auto;"
+>
+  <!-- Section header -->
+  <div class="reveal" style="display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem;">
+    <span class="section-label">02 — Progetti</span>
+    <div style="flex: 1; height: 1px; background: var(--color-border);"></div>
   </div>
+
+  <!-- Bento grid -->
+  <div
+    style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; gap: 1px; background: var(--color-border);"
+  >
+    {projects.map((p) => (
+      <div
+        class="reveal"
+        style={`
+          background: var(--color-bg-surface);
+          padding: 2rem;
+          position: relative;
+          overflow: hidden;
+          transition: background 0.3s ease;
+          ${p.wide ? 'grid-column: span 2;' : ''}
+        `}
+        onmouseenter="this.style.background='var(--color-bg-elevated)'"
+        onmouseleave="this.style.background='var(--color-bg-surface)'"
+      >
+        <!-- Accent top border -->
+        <div
+          style={`position: absolute; top: 0; left: 0; right: 0; height: 2px; background: ${p.accent}; opacity: 0.6;`}
+          aria-hidden="true"
+        ></div>
+
+        <!-- Year label -->
+        <span
+          style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-ghost); display: block; margin-bottom: 1rem;"
+        >{p.year}</span>
+
+        <!-- Title row -->
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
+          <h3
+            style={`font-family: var(--font-display); font-weight: 400; font-size: ${p.wide ? '2rem' : '1.5rem'}; color: var(--color-ink); line-height: 1.1; margin: 0;`}
+          >{p.title}</h3>
+
+          {p.url && (
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visita ${p.title}`}
+              style="flex-shrink: 0; width: 32px; height: 32px; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-ink-ghost); transition: all 0.2s; text-decoration: none;"
+              onmouseenter="this.style.borderColor='var(--color-terra)';this.style.color='var(--color-terra)'"
+              onmouseleave="this.style.borderColor='var(--color-border)';this.style.color='var(--color-ink-ghost)'"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          )}
+        </div>
+
+        <p
+          style="font-family: var(--font-body); font-weight: 300; font-size: 0.875rem; line-height: 1.75; color: var(--color-ink-dim); margin: 0 0 1.5rem;"
+        >{p.description}</p>
+
+        <!-- Tags -->
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          {p.tags.map(t => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
 </section>
+
+<style>
+  @media (max-width: 900px) {
+    div[style*="grid-template-columns: repeat(3"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  @media (max-width: 640px) {
+    section { padding: 5rem 1.5rem !important; }
+    div[style*="grid-template-columns: repeat(3"] {
+      grid-template-columns: 1fr !important;
+    }
+    div[style*="grid-column: span 2"] {
+      grid-column: span 1 !important;
+    }
+  }
+</style>
