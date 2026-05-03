@@ -9,10 +9,10 @@ interface Project {
   accent?: string;
 }
 
-const projects: Project[] = [
+const workProjects: Project[] = [
   {
     title: 'freedome.it',
-    year: '2019 — oggi',
+    year: '2023 — oggi',
     description: 'Marketplace italiano per esperienze outdoor: escursioni, arrampicate, sci, canoe e molto altro. Piattaforma completa con sistema di prenotazioni real-time, gateway di pagamento, pannello operatori e gestione disponibilità.',
     tags: ['Laravel', 'PHP', 'MySQL', 'Redis', 'Stripe'],
     url: 'https://freedome.it',
@@ -21,7 +21,7 @@ const projects: Project[] = [
   },
   {
     title: 'freedome.eu',
-    year: '2022 — oggi',
+    year: '2023 — oggi',
     description: 'Espansione europea del marketplace. Multilingua, multi-valuta, ottimizzato per il mercato internazionale con localizzazione completa.',
     tags: ['Laravel', 'PHP', 'i18n', 'MySQL'],
     url: 'https://freedome.eu',
@@ -29,24 +29,68 @@ const projects: Project[] = [
   },
   {
     title: 'Booking Engine',
-    year: '2020',
+    year: '2023',
     description: 'Engine custom per gestione disponibilità, slot e prenotazioni real-time con logica anti-race-condition.',
     tags: ['PHP', 'MySQL', 'Redis', 'Queue'],
     accent: '#2D6E7E',
   },
   {
     title: 'API Layer',
-    year: '2021',
+    year: '2023',
     description: 'REST API per integrazioni con app mobile, partner esterni e gateway di pagamento.',
     tags: ['REST', 'OAuth2', 'JSON', 'Stripe'],
     accent: '#3D5A3E',
   },
   {
     title: 'Backoffice CMS',
-    year: '2019',
+    year: '2023',
     description: 'Pannello custom per gestione operatori, esperienze, prenotazioni e reportistica avanzata.',
     tags: ['Laravel', 'Vue.js', 'MySQL'],
     accent: '#5A3D5A',
+  },
+];
+
+const personalProjects: Project[] = [
+  {
+    title: 'Lavasecco',
+    year: '2025',
+    description: 'App desktop per la gestione operativa di una lavanderia: ordini, clienti e listino prezzi. Costruita con Electron e SQLite, cross-platform (Windows, macOS, Linux), con migrazione automatica dei dati legacy.',
+    tags: ['Electron', 'JavaScript', 'SQLite', 'Bootstrap'],
+    url: 'https://github.com/gherardiandrea/Lavasecco',
+    wide: true,
+    accent: '#C4622D',
+  },
+  {
+    title: 'Physio Manager',
+    year: '2025',
+    description: 'Gestionale desktop per studi fisioterapici: anagrafica pazienti, storico visite, calendario appuntamenti e statistiche. Dati in locale, conforme GDPR.',
+    tags: ['Electron', 'JavaScript', 'SQLite', 'Bootstrap'],
+    url: 'https://github.com/gherardiandrea/gestionale-fisiotereapia',
+    accent: '#2D6E7E',
+  },
+  {
+    title: 'M Crochet Lab',
+    year: '2024',
+    description: 'Sito vetrina per un brand artigianale di borse all\'uncinetto. Gestione prodotti via Markdown, immagini WebP ottimizzate, SEO, deploy automatico su Netlify.',
+    tags: ['PHP', 'Jigsaw', 'Tailwind', 'Alpine.js'],
+    url: 'https://github.com/gherardiandrea/m-crochet-lab',
+    accent: '#5A3D5A',
+  },
+  {
+    title: 'TeamDraw',
+    year: '2026',
+    description: 'Web app per generare squadre casuali e bilanciate. Fascia di livello per giocatore, algoritmo di distribuzione equa, salvataggio configurazioni e condivisione via WhatsApp. Zero tracciamento.',
+    tags: ['TypeScript', 'Web App'],
+    url: 'https://github.com/gherardiandrea/team-generator',
+    accent: '#3D5A3E',
+  },
+  {
+    title: 'Estrazione Fanta',
+    year: '2026',
+    description: 'Tool PHP per gestire l\'estrazione delle squadre al fantacalcio. Semplice, veloce, diretto.',
+    tags: ['PHP'],
+    url: 'https://github.com/gherardiandrea/estrazione-fanta',
+    accent: '#8B6914',
   },
 ];
 ---
@@ -61,69 +105,78 @@ const projects: Project[] = [
     <div style="flex: 1; height: 1px; background: var(--color-border);"></div>
   </div>
 
-  <!-- Bento grid -->
+  <!-- Work projects -->
+  <div class="reveal" style="margin-bottom: 1rem;">
+    <p style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-ink-ghost); margin: 0 0 1.5rem;">Lavoro</p>
+  </div>
   <div
-    style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; gap: 1px; background: var(--color-border);"
+    style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; gap: 1px; background: var(--color-border); margin-bottom: 4rem;"
   >
-    {projects.map((p) => (
+    {workProjects.map((p) => (
       <div
         class="reveal"
-        style={`
-          background: var(--color-bg-surface);
-          padding: 2rem;
-          position: relative;
-          overflow: hidden;
-          transition: background 0.3s ease;
-          ${p.wide ? 'grid-column: span 2;' : ''}
-        `}
+        style={`background: var(--color-bg-surface); padding: 2rem; position: relative; overflow: hidden; transition: background 0.3s ease; ${p.wide ? 'grid-column: span 2;' : ''}`}
         onmouseenter="this.style.background='var(--color-bg-elevated)'"
         onmouseleave="this.style.background='var(--color-bg-surface)'"
       >
-        <!-- Accent top border -->
-        <div
-          style={`position: absolute; top: 0; left: 0; right: 0; height: 2px; background: ${p.accent}; opacity: 0.6;`}
-          aria-hidden="true"
-        ></div>
-
-        <!-- Year label -->
-        <span
-          style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-ghost); display: block; margin-bottom: 1rem;"
-        >{p.year}</span>
-
-        <!-- Title row -->
+        <div style={`position: absolute; top: 0; left: 0; right: 0; height: 2px; background: ${p.accent}; opacity: 0.6;`} aria-hidden="true"></div>
+        <span style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-ghost); display: block; margin-bottom: 1rem;">{p.year}</span>
         <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
-          <h3
-            style={`font-family: var(--font-display); font-weight: 400; font-size: ${p.wide ? '2rem' : '1.5rem'}; color: var(--color-ink); line-height: 1.1; margin: 0;`}
-          >{p.title}</h3>
-
+          <h3 style={`font-family: var(--font-display); font-weight: 400; font-size: ${p.wide ? '2rem' : '1.5rem'}; color: var(--color-ink); line-height: 1.1; margin: 0;`}>{p.title}</h3>
           {p.url && (
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visita ${p.title}`}
+            <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={`Visita ${p.title}`}
               style="flex-shrink: 0; width: 32px; height: 32px; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-ink-ghost); transition: all 0.2s; text-decoration: none;"
               onmouseenter="this.style.borderColor='var(--color-terra)';this.style.color='var(--color-terra)'"
               onmouseleave="this.style.borderColor='var(--color-border)';this.style.color='var(--color-ink-ghost)'"
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                <polyline points="15 3 21 3 21 9"/>
-                <line x1="10" y1="14" x2="21" y2="3"/>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
               </svg>
             </a>
           )}
         </div>
-
-        <p
-          style="font-family: var(--font-body); font-weight: 300; font-size: 0.875rem; line-height: 1.75; color: var(--color-ink-dim); margin: 0 0 1.5rem;"
-        >{p.description}</p>
-
-        <!-- Tags -->
+        <p style="font-family: var(--font-body); font-weight: 300; font-size: 0.875rem; line-height: 1.75; color: var(--color-ink-dim); margin: 0 0 1.5rem;">{p.description}</p>
         <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-          {p.tags.map(t => (
-            <span class="tag">{t}</span>
-          ))}
+          {p.tags.map(t => <span class="tag">{t}</span>)}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Personal projects -->
+  <div class="reveal" style="margin-bottom: 1rem;">
+    <p style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-ink-ghost); margin: 0 0 1.5rem;">Personali</p>
+  </div>
+  <div
+    style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; gap: 1px; background: var(--color-border);"
+  >
+    {personalProjects.map((p) => (
+      <div
+        class="reveal"
+        style={`background: var(--color-bg-surface); padding: 2rem; position: relative; overflow: hidden; transition: background 0.3s ease; ${p.wide ? 'grid-column: span 2;' : ''}`}
+        onmouseenter="this.style.background='var(--color-bg-elevated)'"
+        onmouseleave="this.style.background='var(--color-bg-surface)'"
+      >
+        <div style={`position: absolute; top: 0; left: 0; right: 0; height: 2px; background: ${p.accent}; opacity: 0.4;`} aria-hidden="true"></div>
+
+        <!-- GitHub icon top right -->
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-ghost);">{p.year}</span>
+          {p.url && (
+            <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={`GitHub: ${p.title}`}
+              style="flex-shrink: 0; width: 28px; height: 28px; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-ink-ghost); transition: all 0.2s; text-decoration: none;"
+              onmouseenter="this.style.borderColor='var(--color-terra)';this.style.color='var(--color-terra)'"
+              onmouseleave="this.style.borderColor='var(--color-border)';this.style.color='var(--color-ink-ghost)'"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          )}
+        </div>
+
+        <h3 style={`font-family: var(--font-display); font-weight: 400; font-size: ${p.wide ? '2rem' : '1.4rem'}; color: var(--color-ink); line-height: 1.1; margin: 0 0 0.75rem;`}>{p.title}</h3>
+        <p style="font-family: var(--font-body); font-weight: 300; font-size: 0.875rem; line-height: 1.75; color: var(--color-ink-dim); margin: 0 0 1.5rem;">{p.description}</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          {p.tags.map(t => <span class="tag">{t}</span>)}
         </div>
       </div>
     ))}
@@ -133,13 +186,13 @@ const projects: Project[] = [
 
 <style>
   @media (max-width: 900px) {
-    div[style*="grid-template-columns: repeat(3"] {
+    div[style*="grid-template-columns: repeat(3, 1fr)"] {
       grid-template-columns: repeat(2, 1fr) !important;
     }
   }
   @media (max-width: 640px) {
     section { padding: 5rem 1.5rem !important; }
-    div[style*="grid-template-columns: repeat(3"] {
+    div[style*="grid-template-columns: repeat(3, 1fr)"] {
       grid-template-columns: 1fr !important;
     }
     div[style*="grid-column: span 2"] {
