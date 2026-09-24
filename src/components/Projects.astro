@@ -28,13 +28,6 @@ const workProjects: Project[] = [
     accent: '#8B6914',
   },
   {
-    title: 'Booking Engine',
-    year: '2023',
-    description: 'Engine custom per gestione disponibilità, slot e prenotazioni real-time con logica anti-race-condition.',
-    tags: ['PHP', 'MySQL', 'Redis', 'Queue'],
-    accent: '#2D6E7E',
-  },
-  {
     title: 'API Layer',
     year: '2023',
     description: 'REST API per integrazioni con app mobile, partner esterni e gateway di pagamento.',
@@ -42,36 +35,35 @@ const workProjects: Project[] = [
     accent: '#3D5A3E',
   },
   {
-    title: 'Backoffice CMS',
-    year: '2023',
-    description: 'Pannello custom per gestione operatori, esperienze, prenotazioni e reportistica avanzata.',
-    tags: ['Laravel', 'Vue.js', 'MySQL'],
+    title: 'Contabilità e pagamenti operatori',
+    year: '2023 — oggi',
+    description: 'Responsabile della contabilità aziendale e dei pagamenti a oltre 2.000 operatori.',
+    tags: ['Laravel', 'PHP', 'MySQL'],
+    accent: '#2D6E7E',
+  },
+  {
+    title: 'Integrazioni esterne',
+    year: '2023 — oggi',
+    description: 'Pagamenti con Stripe e PayPal, channel manager (Holidoit, FareHarbor) e chatbot OrygoAI.',
+    tags: ['Stripe', 'PayPal', 'REST API', 'OAuth2'],
     accent: '#5A3D5A',
   },
 ];
 
 const personalProjects: Project[] = [
   {
-    title: 'Lavasecco',
-    year: '2025',
-    description: 'App desktop per la gestione operativa di una lavanderia: ordini, clienti e listino prezzi. Costruita con Electron e SQLite, cross-platform (Windows, macOS, Linux), con migrazione automatica dei dati legacy.',
-    tags: ['Electron', 'JavaScript', 'SQLite', 'Bootstrap'],
-    url: 'https://github.com/gherardiandrea/Lavasecco',
+    title: 'Estrazione Fanta',
+    year: '2026',
+    description: 'App Laravel 11 per estrazioni casuali senza ripetizioni fino al completamento del ciclo: storico persistente, test automatici e CI su GitHub Actions.',
+    tags: ['Laravel', 'PHP', 'SQLite', 'GitHub Actions'],
+    url: 'https://github.com/gherardiandrea/estrazione-fanta',
     wide: true,
-    accent: '#C4622D',
-  },
-  {
-    title: 'Physio Manager',
-    year: '2025',
-    description: 'Gestionale desktop per studi fisioterapici: anagrafica pazienti, storico visite, calendario appuntamenti e statistiche. Dati in locale, conforme GDPR.',
-    tags: ['Electron', 'JavaScript', 'SQLite', 'Bootstrap'],
-    url: 'https://github.com/gherardiandrea/gestionale-fisiotereapia',
-    accent: '#2D6E7E',
+    accent: '#8B6914',
   },
   {
     title: 'M Crochet Lab',
     year: '2024',
-    description: 'Sito vetrina per un brand artigianale di borse all\'uncinetto. Gestione prodotti via Markdown, immagini WebP ottimizzate, SEO, deploy automatico su Netlify.',
+    description: 'Sito vetrina per un brand artigianale di borse all\'uncinetto, online su m-crochet-lab.netlify.app. Gestione prodotti via Markdown, immagini WebP ottimizzate, SEO, deploy automatico su Netlify.',
     tags: ['PHP', 'Jigsaw', 'Tailwind', 'Alpine.js'],
     url: 'https://github.com/gherardiandrea/m-crochet-lab',
     accent: '#5A3D5A',
@@ -80,17 +72,25 @@ const personalProjects: Project[] = [
     title: 'TeamDraw',
     year: '2026',
     description: 'Web app per generare squadre casuali e bilanciate. Fascia di livello per giocatore, algoritmo di distribuzione equa, salvataggio configurazioni e condivisione via WhatsApp. Zero tracciamento.',
-    tags: ['TypeScript', 'Web App'],
+    tags: ['React', 'TypeScript', 'Tailwind CSS'],
     url: 'https://github.com/gherardiandrea/team-generator',
     accent: '#3D5A3E',
   },
   {
-    title: 'Estrazione Fanta',
-    year: '2026',
-    description: 'Tool PHP per gestire l\'estrazione delle squadre al fantacalcio. Semplice, veloce, diretto.',
-    tags: ['PHP'],
-    url: 'https://github.com/gherardiandrea/estrazione-fanta',
-    accent: '#8B6914',
+    title: 'Physio Manager',
+    year: '2025',
+    description: 'Gestionale desktop per studi fisioterapici: anagrafica pazienti, storico visite, calendario appuntamenti e statistiche. Dati salvati solo in locale.',
+    tags: ['Electron', 'JavaScript', 'SQLite', 'Bootstrap'],
+    url: 'https://github.com/gherardiandrea/gestionale-fisioterapia',
+    accent: '#2D6E7E',
+  },
+  {
+    title: 'Lavasecco',
+    year: '2025',
+    description: 'App desktop per la gestione operativa di una lavanderia: ordini, clienti e listino prezzi. Costruita con Electron e SQLite, cross-platform (Windows, macOS, Linux), con migrazione automatica dei dati legacy.',
+    tags: ['Electron', 'JavaScript', 'SQLite', 'Bootstrap'],
+    url: 'https://github.com/gherardiandrea/Lavasecco',
+    accent: '#C4622D',
   },
 ];
 ---
@@ -107,7 +107,7 @@ const personalProjects: Project[] = [
 
   <!-- Work projects -->
   <div class="reveal" style="margin-bottom: 1rem;">
-    <p style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-ink-ghost); margin: 0 0 1.5rem;">Lavoro</p>
+    <p style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-ink-ghost); margin: 0 0 1.5rem;">Lavoro</p>
   </div>
   <div
     style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; gap: 1px; background: var(--color-border); margin-bottom: 4rem;"
@@ -120,7 +120,7 @@ const personalProjects: Project[] = [
         onmouseleave="this.style.background='var(--color-bg-surface)'"
       >
         <div style={`position: absolute; top: 0; left: 0; right: 0; height: 2px; background: ${p.accent}; opacity: 0.6;`} aria-hidden="true"></div>
-        <span style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-ghost); display: block; margin-bottom: 1rem;">{p.year}</span>
+        <span style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-ghost); display: block; margin-bottom: 1rem;">{p.year}</span>
         <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
           <h3 style={`font-family: var(--font-display); font-weight: 400; font-size: ${p.wide ? '2rem' : '1.5rem'}; color: var(--color-ink); line-height: 1.1; margin: 0;`}>{p.title}</h3>
           {p.url && (
@@ -145,7 +145,7 @@ const personalProjects: Project[] = [
 
   <!-- Personal projects -->
   <div class="reveal" style="margin-bottom: 1rem;">
-    <p style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-ink-ghost); margin: 0 0 1.5rem;">Personali</p>
+    <p style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-ink-ghost); margin: 0 0 1.5rem;">Personali</p>
   </div>
   <div
     style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; gap: 1px; background: var(--color-border);"
@@ -161,7 +161,7 @@ const personalProjects: Project[] = [
 
         <!-- GitHub icon top right -->
         <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem;">
-          <span style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-ghost);">{p.year}</span>
+          <span style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-ghost);">{p.year}</span>
           {p.url && (
             <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={`GitHub: ${p.title}`}
               style="flex-shrink: 0; width: 28px; height: 28px; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-ink-ghost); transition: all 0.2s; text-decoration: none;"

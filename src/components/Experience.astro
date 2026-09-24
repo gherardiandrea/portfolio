@@ -2,11 +2,11 @@
 const experiences = [
   {
     period: '2023 — presente',
-    role: 'Senior Web Developer',
-    company: 'freedome.it / freedome.eu',
+    role: 'Senior Software Engineer',
+    company: 'Freedome',
     location: 'Remote · Italia',
-    description: 'Sviluppo e manutenzione di due marketplace per esperienze outdoor. Architettura Laravel in team distribuito, integrazione gateway di pagamento, API esterne, Redis caching e ottimizzazione performance.',
-    tags: ['PHP', 'Laravel', 'MySQL', 'Redis', 'Stripe API'],
+    description: 'Sviluppo e manutenzione del backend in Laravel. Responsabile della contabilità aziendale e dei pagamenti a oltre 2.000 operatori, delle integrazioni con Stripe, PayPal e channel manager. Code review, affiancamento dei colleghi, stime e pianificazione.',
+    tags: ['PHP', 'Laravel', 'MySQL', 'Redis', 'Docker', 'AWS S3'],
     current: true,
     url: 'https://www.freedome.it',
   },
@@ -15,40 +15,50 @@ const experiences = [
     role: 'Web Developer',
     company: 'LSWR Group',
     location: 'Italia',
-    description: 'Sviluppo web in ambito editoriale e formativo. Realizzazione e manutenzione di piattaforme digitali per uno dei principali gruppi editoriali italiani specializzati in contenuti professionali.',
-    tags: ['PHP', 'Laravel', 'MySQL', 'REST API'],
+    description: 'Sviluppo e manutenzione del gestionale interno usato da tutte le aziende della holding, in PHP nativo senza framework.',
+    tags: ['PHP', 'JavaScript', 'MySQL'],
     current: false,
     url: 'http://www.lswrgroup.com/',
   },
   {
     period: '2019 — 2021',
-    role: 'Web Developer',
-    company: 'DDX Group',
+    role: 'Software Developer',
+    company: 'DDX S.r.l.',
     location: 'Italia',
-    description: 'Sviluppo di soluzioni web e applicativi per clienti enterprise. Primo impiego full-time dopo la laurea, con focus su PHP, Laravel e integrazione di sistemi.',
-    tags: ['PHP', 'Laravel', 'Symfony', 'MySQL'],
+    description: 'Progettazione e sviluppo da zero del gestionale interno aziendale. Responsabile di tutta la parte web dell\'azienda, sviluppata con Symfony.',
+    tags: ['PHP', 'Symfony', 'MySQL'],
     current: false,
     url: 'https://www.ddxgroup.com/',
   },
   {
     period: '2019',
-    role: 'Laurea — Ingegneria Informatica',
+    role: 'Laurea Magistrale — Ingegneria Informatica',
     company: 'Università degli Studi di Bergamo',
     location: 'Campus di Dalmine (BG)',
-    description: 'Percorso triennale in ingegneria informatica. Formazione su algoritmi, reti, architetture software e sviluppo applicativo.',
-    tags: ['Informatica', 'Algoritmi', 'Reti', 'Architetture'],
+    description: 'Percorso industriale, votazione 98/110.',
+    tags: ['Ingegneria', 'Software'],
     current: false,
     isEdu: true,
   },
   {
     period: '2016 — 2019',
-    role: 'Web Developer (part-time)',
-    company: 'DDX Group',
+    role: 'Tecnico e sviluppatore (part-time)',
+    company: 'DDX S.r.l.',
     location: 'Italia',
-    description: 'Prime esperienze lavorative in parallelo agli studi universitari. Sviluppo web con PHP e i primi approcci a Laravel, crescendo gradualmente nelle responsabilità fino all\'impiego full-time dopo la laurea.',
-    tags: ['PHP', 'Laravel', 'MySQL', 'jQuery'],
+    description: 'Assistenza tecnica e sviluppo software part-time, in parallelo agli studi universitari.',
+    tags: ['PHP', 'MySQL'],
     current: false,
     url: 'https://www.ddxgroup.com/',
+  },
+  {
+    period: '2017',
+    role: 'Laurea Triennale — Ingegneria Informatica',
+    company: 'Università degli Studi di Bergamo',
+    location: 'Campus di Dalmine (BG)',
+    description: 'Formazione su algoritmi, reti, architetture software e sviluppo applicativo.',
+    tags: ['Informatica', 'Algoritmi', 'Reti', 'Architetture'],
+    current: false,
+    isEdu: true,
   },
 ];
 ---
@@ -132,11 +142,11 @@ const experiences = [
             <div style="display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;">
               {exp.current && (
                 <span
-                  style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #4ade80; border: 1px solid rgba(74,222,128,0.25); padding: 0.2rem 0.6rem; background: rgba(74,222,128,0.05);"
+                  style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #4ade80; border: 1px solid rgba(74,222,128,0.25); padding: 0.2rem 0.6rem; background: rgba(74,222,128,0.05);"
                 >live</span>
               )}
               <span
-                style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--color-ink-ghost);"
+                style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--color-ink-ghost);"
               >{exp.period}</span>
             </div>
           </div>

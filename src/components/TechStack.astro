@@ -6,10 +6,11 @@ const categories = [
     items: [
       { name: 'PHP',       note: '10 anni' },
       { name: 'Laravel',   note: 'framework principale' },
-      { name: 'Symfony',   note: 'framework principale' },
+      { name: 'Symfony',   note: 'framework' },
       { name: 'MySQL',     note: 'database relazionale' },
       { name: 'Redis',     note: 'cache & queue' },
       { name: 'REST API',  note: 'design & consumo' },
+      { name: 'OAuth2',    note: 'autenticazione API' },
     ],
   },
   {
@@ -28,12 +29,13 @@ const categories = [
     num: '—',
     label: 'Tools',
     items: [
-      { name: 'Git',        note: 'versioning' },
-      { name: 'Linux',      note: 'server & dev' },
-      { name: 'Docker',     note: 'container' },
-      { name: 'Nginx',      note: 'web server' },
-      { name: 'Composer',   note: 'package manager' },
-      { name: 'CI / CD',    note: 'deploy automatizzato' },
+      { name: 'Git',            note: 'versioning' },
+      { name: 'Linux',          note: 'server & dev' },
+      { name: 'Docker',         note: 'container' },
+      { name: 'Nginx',          note: 'web server' },
+      { name: 'CI / CD',        note: 'deploy automatizzato' },
+      { name: 'PHPUnit / Pest', note: 'testing' },
+      { name: 'AWS S3',         note: 'storage' },
     ],
   },
 ];
@@ -78,7 +80,7 @@ const categories = [
                 style="font-family: var(--font-body); font-weight: 400; font-size: 0.9rem; color: var(--color-ink);"
               >{item.name}</span>
               <span
-                style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--color-ink-ghost); text-align: right; flex-shrink: 0;"
+                style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--color-ink-ghost); text-align: right; flex-shrink: 0;"
               >{item.note}</span>
             </li>
           ))}

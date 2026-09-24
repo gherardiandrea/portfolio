@@ -15,7 +15,7 @@
   /* Text — warm cream hierarchy */
   --color-ink:         #F2ECD8;
   --color-ink-dim:     #8A836B;
-  --color-ink-ghost:   #4A4538;
+  --color-ink-ghost:   #807962;
 
   /* Accent — terracotta / burnt sienna */
   --color-terra:       #C4622D;
@@ -85,7 +85,7 @@ body::after {
 /* ─── Section number label ───────────────────────────────── */
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-terra);
@@ -209,7 +209,7 @@ body::after {
 /* ─── Tag pill ───────────────────────────────────────────── */
 .tag {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   letter-spacing: 0.08em;
   padding: 0.25rem 0.6rem;
   border: 1px solid var(--color-border);

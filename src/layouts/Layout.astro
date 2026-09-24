@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'Andrea Gherardi — Web Developer',
-  description = 'Andrea Gherardi, ingegnere informatico e sviluppatore web. PHP, Laravel, Symfony. Dal 2016 costruisco prodotti web scalabili e ben progettati.',
+  title = 'Andrea Gherardi — Senior Software Engineer',
+  description = 'Andrea Gherardi, ingegnere informatico e Senior Software Engineer. Backend PHP con Laravel e Symfony: pagamenti, integrazioni e API REST.',
 } = Astro.props;
 ---
 <!doctype html>
@@ -22,6 +22,12 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="it_IT" />
+    <meta property="og:url" content="https://andrea-gherardi.netlify.app/" />
+    <meta property="og:image" content="https://andrea-gherardi.netlify.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://andrea-gherardi.netlify.app/" />
 
     <!-- Cormorant Garamond + DM Sans + IBM Plex Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
